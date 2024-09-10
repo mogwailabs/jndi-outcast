@@ -1,4 +1,4 @@
-package de.mogwailabs.jndioutcastservlet;
+package de.mogwailabs.tomcat10nashorn;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.naming.InitialContext;
@@ -18,10 +18,8 @@ public class LookupServlet extends HttpServlet {
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "true");
         System.setProperty("com.sun.jndi.ldap.object.trustSerialDat", "true");
 
-        // Retrieve the query parameter "resource"
         String resourceName = request.getParameter("resource");
 
-        // Prepare response writer
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
@@ -30,11 +28,9 @@ public class LookupServlet extends HttpServlet {
             return;
         }
 
-        // Perform JNDI lookup
         try {
             Object resource = InitialContext.doLookup(resourceName);
 
-            // Example: printing the result as a string (could be a DataSource, etc.)
             out.println("<h3>JNDI Lookup Result</h3>");
             out.println("<p>Resource Name: " + resourceName + "</p>");
             out.println("<p>Resource Value: " + resource.toString() + "</p>");
