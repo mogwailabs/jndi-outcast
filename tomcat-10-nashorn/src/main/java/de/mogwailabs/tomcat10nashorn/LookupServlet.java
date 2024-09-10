@@ -1,9 +1,9 @@
 package de.mogwailabs.tomcat10nashorn;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class LookupServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "true");
         System.setProperty("com.sun.jndi.ldap.object.trustSerialDat", "true");
@@ -37,6 +37,12 @@ public class LookupServlet extends HttpServlet {
         } catch (NamingException e) {
             out.println("<h3>Error</h3>");
             out.println("<p>Failed to perform JNDI lookup: " + e.getMessage() + "</p>");
+
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+
+            out.println("<p><b>Stack Trace:</b><br>" + sw.toString().replaceAll("\n", "<br>") + "</p>");
         } finally {
             out.close();
         }
