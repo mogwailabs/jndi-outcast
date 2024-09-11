@@ -16,6 +16,7 @@
         <module>tomcat-10-jshell</module>
         <module>elProcessorPlayground</module>
         <module>h2</module>
+        <module>groovy</module>
     </modules>
 
     <properties>
