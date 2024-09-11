@@ -15,6 +15,7 @@
         <module>tomcat-9-jshell</module>
         <module>tomcat-10-jshell</module>
         <module>elProcessorPlayground</module>
+        <module>h2</module>
     </modules>
 
     <properties>
