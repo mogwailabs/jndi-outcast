@@ -10,9 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>tomcat-10-nashorn</module>
         <module>tomcat-9-nashorn</module>
+        <module>tomcat-10-nashorn</module>
         <module>tomcat-9-jshell</module>
+        <module>tomcat-10-jshell</module>
         <module>elProcessorPlayground</module>
     </modules>
 
