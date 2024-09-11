@@ -17,10 +17,6 @@ public class LookupServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-        System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "true");
-        System.setProperty("com.sun.jndi.ldap.object.trustSerialDat", "true");
-
         String resourceName = request.getParameter("resource");
 
         response.setContentType("text/html");
@@ -37,7 +33,7 @@ public class LookupServlet extends HttpServlet {
 
             out.println("<h3>JNDI Lookup Result</h3>");
             out.println("<p>Resource Name: " + resourceName + "</p>");
-            out.println("<p>Resource Value: " + ds.toString() + "</p>");
+            out.println("<p>Resource Value: " + ds + "</p>");
         } catch (NamingException | SQLException e) {
             out.println("<h3>Error</h3>");
             out.println("<p>Failed to perform JNDI lookup: " + e.getMessage() + "</p>");

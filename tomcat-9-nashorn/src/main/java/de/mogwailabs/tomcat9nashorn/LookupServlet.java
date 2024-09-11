@@ -13,10 +13,6 @@ public class LookupServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-        System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "true");
-        System.setProperty("com.sun.jndi.ldap.object.trustSerialDat", "true");
-
         String resourceName = request.getParameter("resource");
 
         response.setContentType("text/html");
