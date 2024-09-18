@@ -30,7 +30,9 @@ public class LookupServlet extends HttpServlet {
         }
 
         try {
-            var resource = InitialContext.doLookup(resourceName);
+            // Calling .getConnection() makes the HTTP request in order to fetch an INIT script.
+            DataSource dataSource = InitialContext.doLookup(resourceName);
+            dataSource.getConnection();
 
             // Make sure the file has been created.
             Thread.sleep(100);
@@ -40,7 +42,7 @@ public class LookupServlet extends HttpServlet {
 
             out.println("<h3>JNDI Lookup Result</h3>");
             out.println("<p>Resource Name: " + resourceName + "</p>");
-            out.println("<p>Resource Value: " + resource.toString() + "</p>");
+            out.println("<p>Resource Value: " + dataSource.toString() + "</p>");
 
             if (file.exists()) {
                 response.setStatus(HttpServletResponse.SC_OK);
@@ -58,6 +60,8 @@ public class LookupServlet extends HttpServlet {
             e.printStackTrace(pw);
 
             out.println("<p><b>Stack Trace:</b><br>" + sw.toString().replaceAll("\n", "<br>") + "</p>");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         } finally {
             out.close();
         }
