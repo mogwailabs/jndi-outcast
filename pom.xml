@@ -17,6 +17,7 @@
         <module>elProcessorPlayground</module>
         <module>h2</module>
         <module>groovy</module>
+        <module>commons-collections-6</module>
     </modules>
 
     <properties>
