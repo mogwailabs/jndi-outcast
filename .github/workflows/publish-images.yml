@@ -10,7 +10,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      IMAGE_REPO: ghcr.io/thegebirge/jndi-outcast
+      IMAGE_REPO: ghcr.io/mogwailabs/jndi-outcast
 
     steps:
       - name: Checkout code
