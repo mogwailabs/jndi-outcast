@@ -19,6 +19,7 @@
         <module>groovy</module>
         <module>commons-collections-6</module>
         <module>c3p0</module>
+        <module>reference</module>
     </modules>
 
     <properties>

@@ -98,3 +98,11 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.IMAGE_REPO }}/c3p0:latest
+
+      - name: Build and push image for reference servlet
+        uses: docker/build-push-action@v5
+        with:
+          context: ./reference
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ env.IMAGE_REPO }}/reference:latest
