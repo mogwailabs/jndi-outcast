@@ -90,3 +90,11 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.IMAGE_REPO }}/groovy:latest
+
+      - name: Build and push image for c3p0 servlet
+        uses: docker/build-push-action@v5
+        with:
+          context: ./c3p0
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ env.IMAGE_REPO }}/c3p0:latest
