@@ -56,7 +56,7 @@
                 <configuration>
                     <toolchains>
                         <jdk>
-                            <version>11.0.24-amzn</version>
+                            <version>17</version>
                             <vendor>corretto</vendor>
                         </jdk>
                     </toolchains>
